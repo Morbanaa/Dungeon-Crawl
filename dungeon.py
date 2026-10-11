@@ -1,8 +1,11 @@
+from player import Player
+
 class Dungeon():
 	def __init__(self):
 		self.height = None
 		self.width = None
 		self.map = []
+		self.player = Player(1,1)
 		
 	def pull_dungeon(self):
 		in_file = open("room_1.txt","r")
@@ -19,5 +22,8 @@ class Dungeon():
 	def draw_dungeon(self):
 		for y in range(self.height):
 			for x in range(self.width):
-				print(self.map[y][x],end="")
+				if y == self.player.ypos and x == self.player.xpos:
+					print("O",end="")
+				else:
+					print(self.map[y][x],end="")
 			print()
