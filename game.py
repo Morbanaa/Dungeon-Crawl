@@ -1,22 +1,21 @@
 from dungeon import Dungeon
 
 class Game():
-	def __init__(self):
-		self.dungeon = Dungeon()
 
-	def start(self):
+	@classmethod
+	def start(cls):
 		print("Welcome to Dungeon Crawl...")
-		self.main_loop()
-		
-	def main_loop(self):
-		self.dungeon.pull_dungeon()
-		self.dungeon.draw_dungeon()
-		
-	def process_input(self):
+		cls.main_loop()
+	
+	@classmethod	
+	def main_loop(cls):
+		Dungeon.pull_dungeon()
+		Dungeon.draw_dungeon()
+	
+	@classmethod
+	def update_game(cls):
 		pass
-		
-	def update_game(self):
-		pass
-		
-	def game_over(self):
+
+	@classmethod	
+	def game_over(cls):
 		pass

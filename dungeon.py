@@ -1,29 +1,31 @@
 from player import Player
 
-class Dungeon():
-	def __init__(self):
-		self.height = None
-		self.width = None
-		self.map = []
-		self.player = Player(1,1)
-		
-	def pull_dungeon(self):
-		in_file = open("room_1.txt","r")
-		for y in in_file:
-			row = []
-			for x in y.rstrip("\n"): # removes the new line char
-				row.append(x)
-			self.map.append(row)
-		self.height = len(self.map)
-		self.width = len(self.map[0])
-		
-		in_file.close()
-		
-	def draw_dungeon(self):
-		for y in range(self.height):
-			for x in range(self.width):
-				if y == self.player.ypos and x == self.player.xpos:
-					print("O",end="")
-				else:
-					print(self.map[y][x],end="")
-			print()
+class Dungeon:
+    height = None
+    width = None
+    map = []
+    player = Player(1, 1)
+
+    @classmethod
+    def pull_dungeon(cls):
+        with open("room_1.txt", "r") as in_file:
+            for y in in_file:
+                row = []
+
+                for x in y.rstrip("\n"):
+                    row.append(x)
+
+                cls.map.append(row)
+
+        cls.height = len(cls.map)
+        cls.width = len(cls.map[0])
+
+    @classmethod
+    def draw_dungeon(cls):
+        for y in range(cls.height):
+            for x in range(cls.width):
+                if y == cls.player.ypos and x == cls.player.xpos:
+                    print("O", end="")
+                else:
+                    print(cls.map[y][x], end="")
+            print()
